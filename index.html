@@ -22,14 +22,14 @@
 <body>
 <div class="container">
     <h2>Local Time</h2>
-    <label for="timezone">Select Region:</label>
+    <label for="timezone">Select a region:</label>
     <select id="timezone">
-        <option value="0">Please select</option>
+        <option value="">Please select</option>
         <option value="8">China Beijing (CST, UTC+8)</option>
         <option value="6">China Urumqi (XJT, UTC+6)</option>
-        <option value="8">Hong Kong (HKT, UTC+8)</option>
-        <option value="8">Macao (HKT, UTC+8)</option>
-        <option value="8">Taiwan (CST, UTC+8)</option>
+        <option value="9">China Hong Kong (HKT, UTC+8)</option>
+        <option value="9">China Macau (HKT, UTC+8)</option>
+        <option value="8">China Taiwan (CST, UTC+8)</option>
         <option value="2">Zambia (CAT, UTC+2)</option>
         <option value="2">Egypt (EET, UTC+2)</option>
         <option value="3">Russia Moscow (MSK, UTC+3)</option>
@@ -40,28 +40,29 @@
         <option value="-8">USA Los Angeles (PST, UTC-8)</option>
         <option value="-5">USA New York (EST, UTC-5)</option>
         <option value="0">UK London (GMT, UTC+0)</option>
-        <option value="2">France Paris (CET, UTC+1)</option>
+        <option value="1">France Paris (CET, UTC+1)</option>
         <option value="10">Australia Sydney (AEST, UTC+10)</option>
-        <option value="2">Germany Berlin (CET, UTC+1)</option>
-        <option value="1">South Korea Seoul (KST, UTC+9)</option>
-        <option value="2">Italy Rome (CET, UTC+1)</option>
-        <option value="2">Spain Madrid (CET, UTC+1)</option>
-        <option value="2">Switzerland Zurich (CET, UTC+1)</option>
-        <option value="2">Netherlands Amsterdam (CET, UTC+1)</option>
-        <option value="1">South Africa Johannesburg (SAST, UTC+2)</option>
+        <option value="1">Germany Berlin (CET, UTC+1)</option>
+        <option value="9">South Korea Seoul (KST, UTC+9)</option>
+        <option value="1">Italy Rome (CET, UTC+1)</option>
+        <option value="1">Spain Madrid (CET, UTC+1)</option>
+        <option value="1">Switzerland Zurich (CET, UTC+1)</option>
+        <option value="1">Netherlands Amsterdam (CET, UTC+1)</option>
+        <option value="2">South Africa Johannesburg (SAST, UTC+2)</option>
         <option value="1">Nigeria Lagos (WAT, UTC+1)</option>
         <option value="-3">Brazil Rio de Janeiro (BRT, UTC-3)</option>
         <option value="-3">Argentina Buenos Aires (ART, UTC-3)</option>
+        <option value="0">Ivory Coast Abidjan (GMT, UTC+0)</option>
     </select>
     <br><br>
-    <button onclick="calculateTimeDifference()">Show Time</button>
+    <button onclick="calculateTimeDifference()">Local Time</button>
     <p id="result"></p>
 </div>
 
 <script>
     function calculateTimeDifference() {
         var timezoneOffset = parseFloat(document.getElementById("timezone").value);
-        if (timezoneOffset === 0) {
+        if (timezoneOffset === "" || isNaN(timezoneOffset)) {
             alert("Please select a region");
             return;
         }
